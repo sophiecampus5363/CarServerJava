@@ -33,3 +33,9 @@ public class CarController {
         carDao.save(car);
     }
 }
+
+// Tu fais un getmapping sur ton /delete/{id} , envoie un delete au back
+// parce que ce n'est pas possible de faire autre chose que get et post
+// en html normalement
+
+// put -> technique des headers
