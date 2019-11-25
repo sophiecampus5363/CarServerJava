@@ -37,9 +37,7 @@ public class CarController {
 
     //modifier une voiture
     @PutMapping(value = "/car")
-    public void modifierVoiture(@RequestBody Car car) {
-        carDao.(car);
-    }
+    public void modifierVoiture(@RequestBody Car car) { carDao.update(car.getId(), car); }
 
 
 }
