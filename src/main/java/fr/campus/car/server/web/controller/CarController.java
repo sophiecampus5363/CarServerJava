@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+import static fr.campus.car.server.dao.CarDaoImpl.cars;
+
 @Api (description ="API pour les opérations CRUD sur les voitures")
 @RestController
 public class CarController {
@@ -27,11 +29,19 @@ public class CarController {
         return carDao.findById(id);
     }
 
-    //ajouter un produit
+    //ajouter une voiture
     @PostMapping(value = "/car")
     public void ajouterVoiture(@RequestBody Car car) {
         carDao.save(car);
     }
+
+    //modifier une voiture
+    @PutMapping(value = "/car")
+    public void modifierVoiture(@RequestBody Car car) {
+        carDao.(car);
+    }
+
+
 }
 
 // Tu fais un getmapping sur ton /delete/{id} , envoie un delete au back

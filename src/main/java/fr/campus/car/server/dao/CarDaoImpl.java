@@ -34,4 +34,31 @@ public class CarDaoImpl implements CarDao {
         cars.add(car);
         return null;
     }
+
+    @Override
+    public Car update(int id, Car updateCar) {
+        for (Car car : cars) {
+            if (car.getId() == id) {
+                if (updateCar.getCarModel() != null) {
+                    car.setCarModel(updateCar.getCarModel());
+                }
+                if (updateCar.getCarMaker() != null) {
+                    car.setCarMaker(updateCar.getCarMaker());
+                }
+                return car;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Car delete(int Id) {
+        for (Car Car : cars) {
+            if (Car.getId() == Id) {
+                cars.remove(Car);
+                return Car;
+            }
+        }
+        return null;
+    }
 }
