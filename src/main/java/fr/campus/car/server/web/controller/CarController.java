@@ -39,6 +39,9 @@ public class CarController {
     @PutMapping(value = "/car")
     public void modifierVoiture(@RequestBody Car car) { carDao.update(car.getId(), car); }
 
+    //supprimer une voiture
+//    @DeleteMapping(value = "/car")
+//    public void supprimerVoiture(@RequestBody Car car) { carDao.delete(car.getId(), car); }
 
 }
 
