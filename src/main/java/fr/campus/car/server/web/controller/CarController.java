@@ -4,6 +4,7 @@ import fr.campus.car.server.model.Car;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class CarController {
 
     @Autowired
     private CarDao carDao;
+//    private Repository carRepo;
 
     //Récupérer la liste des voitures
     @RequestMapping(value="/car", method= RequestMethod.GET)
@@ -36,12 +38,16 @@ public class CarController {
     }
 
     //modifier une voiture
-    @PutMapping(value = "/car")
+    @PutMapping(value = "/car/{id}")
     public void modifierVoiture(@RequestBody Car car) { carDao.update(car.getId(), car); }
 
-    //supprimer une voiture
-//    @DeleteMapping(value = "/car")
-//    public void supprimerVoiture(@RequestBody Car car) { carDao.delete(car.getId(), car); }
+////  supprimer une voiture
+////    @DeleteMapping(value = "/car/'id}")
+////    public void supprimerVoiture(@PathVariable int id) { carDao.delete(car.getId(), car);
+
+//    supprimer une voiture
+    @DeleteMapping(value = "/car/{id}")
+    public void supprimerVoiture(@PathVariable int id) { carDao.delete(id); }
 
 }
 
