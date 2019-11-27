@@ -11,6 +11,7 @@ import java.util.List;
 public interface CarDao extends JpaRepository<Car, Integer> {
     Car findById(int id);
     List<Car> findByPriceGreaterThan(int priceLimit);
+    List<Car> findByCarMakerLike(String search);
 }
 
 

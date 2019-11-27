@@ -48,8 +48,13 @@ public class CarController {
      * Filtre qui affiche les voitures dont le prix > priceLimit
      */
     @GetMapping(value = "test/cars/{priceLimit}")
-    public List<Car> testeDeRequetes(@PathVariable int priceLimit) {
+    public List<Car> testeDeRequete(@PathVariable int priceLimit) {
         return carDao.findByPriceGreaterThan(30000);
+    }
+
+    @GetMapping(value = "test/cars/{search}")
+    public List<Car> testeDeRequete(@PathVariable String search) {
+        return carDao.findByCarMakerLike("%" + search + "%");
     }
 
     /*
