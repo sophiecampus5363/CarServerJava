@@ -1,9 +1,13 @@
 package fr.campus.car.server.web.controller;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import fr.campus.car.server.dao.CarDao;
 import fr.campus.car.server.model.Car;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -14,8 +18,22 @@ public class CarController {
 
     @Autowired
     private CarDao carDao;
-//    private Repository carRepo;
 
+    // Liste de toutes les voitures
+    @RequestMapping(value = "/cars", method = RequestMethod.GET)
+    public MappingJacksonValue listeCars() {
+        Iterable<Car> cars                  = carDao.findAll();
+        SimpleBeanPropertyFilter monFiltre  = SimpleBeanPropertyFilter.serializeAllExcept("carMaker");
+        FilterProvider listDeNosFiltres     = new SimpleFilterProvider().addFilter("monFiltreDynamique", monFiltre);
+        MappingJacksonValue carsFiltres     = new MappingJacksonValue(cars);
+        carsFiltres.setFilters(listDeNosFiltres);
+
+        return carsFiltres;
+    }
+
+    /*
+     * Old DAO method
+     *
     // Récupérer la liste des voitures
     @RequestMapping(value="/car", method= RequestMethod.GET)
     public List<Car> listeVoitures() {
@@ -42,7 +60,7 @@ public class CarController {
     // Supprimer une voiture
     @DeleteMapping(value = "/car/{id}")
     public void supprimerVoiture(@PathVariable int id) { carDao.delete(id); }
-
+    */
 }
 
 // Tu fais un getmapping sur ton /delete/{id} , envoie un delete au back
