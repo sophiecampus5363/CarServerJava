@@ -59,7 +59,6 @@ public class CarController {
     @GetMapping(value = "filterMark/car/{search}")
     public List<Car> testingDeRequete(@PathVariable String search) {
         return carDao.findByCarMakerLike("%" + search + "%");
-        n'importe quoi'
     }
 
     /*
