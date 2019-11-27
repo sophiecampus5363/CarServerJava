@@ -29,9 +29,25 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Base de donnée -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- Base de données en mémoire vive.
+		Une fois l'application fermée, ces données sont perdues.
+			- Auto-configurée par Spring Boot
+			- Très légère
+			- Permet de faire des tests autant de fois que nécessaire en partant d'une bdd propre
+
+			http://localhost:8082/h2-console/
+			JDBC url: jdbc:h2:mem:testdb
+		-->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
