@@ -44,16 +44,20 @@ public class CarController {
     }
 
     /*
-     * GET /test/car/30000
+     * GET /filterPrice/car/30000
      * Filtre qui affiche les voitures dont le prix > priceLimit
      */
     @GetMapping(value = "filterPrice/car/{priceLimit}")
-    public List<Car> testeDeRequete(@PathVariable int priceLimit) {
+    public List<Car> testDeRequete(@PathVariable int priceLimit) {
         return carDao.findByPriceGreaterThan(priceLimit);
     }
 
+    /*
+     * GET /filterMark/car/Tes
+     * Filtre qui affiche les voitures dont la marque contient "Tes"
+     */
     @GetMapping(value = "filterMark/car/{search}")
-    public List<Car> testeDeRequete(@PathVariable String search) {
+    public List<Car> testingDeRequete(@PathVariable String search) {
         return carDao.findByCarMakerLike("%" + search + "%");
     }
 
