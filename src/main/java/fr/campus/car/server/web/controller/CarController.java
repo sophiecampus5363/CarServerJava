@@ -36,16 +36,20 @@ public class CarController {
 
     /*
      * GET /cars/1
-     * Afficher un produit
+     * Afficher une voiture
      */
     @GetMapping(value = "/cars/{id}")
     public Car show(@PathVariable int id) {
         return carDao.findById(id);
     }
 
+    /*
+     * GET /test/cars/30000
+     * Filtre qui affiche les voitures dont le prix > priceLimit
+     */
     @GetMapping(value = "test/cars/{priceLimit}")
     public List<Car> testeDeRequetes(@PathVariable int priceLimit) {
-        return carDao.findByPriceGreaterThan(400);
+        return carDao.findByPriceGreaterThan(30000);
     }
 
     /*
