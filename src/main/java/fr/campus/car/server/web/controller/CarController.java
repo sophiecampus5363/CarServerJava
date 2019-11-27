@@ -16,34 +16,30 @@ public class CarController {
     private CarDao carDao;
 //    private Repository carRepo;
 
-    //Récupérer la liste des voitures
+    // Récupérer la liste des voitures
     @RequestMapping(value="/car", method= RequestMethod.GET)
     public List<Car> listeVoitures() {
         return carDao.findAll();
     }
 
-    //Récupérer une voiture par son Id
+    // Récupérer une voiture par son id
     @ApiOperation(value = "Récupère une voiture grâce à son ID à condition que celle-ci soit en stock")
     @GetMapping(value="/car/{id}")
     public Car afficherUneVoiture(@PathVariable int id) {
         return carDao.findById(id);
     }
 
-    //ajouter une voiture
+    // Ajouter une voiture
     @PostMapping(value = "/car")
     public void ajouterVoiture(@RequestBody Car car) {
         carDao.save(car);
     }
 
-    //modifier une voiture
+    // Modifier une voiture
     @PutMapping(value = "/car/{id}")
     public void modifierVoiture(@RequestBody Car car) { carDao.update(car.getId(), car); }
 
-////  supprimer une voiture
-////    @DeleteMapping(value = "/car/'id}")
-////    public void supprimerVoiture(@PathVariable int id) { carDao.delete(car.getId(), car);
-
-//    supprimer une voiture
+    // Supprimer une voiture
     @DeleteMapping(value = "/car/{id}")
     public void supprimerVoiture(@PathVariable int id) { carDao.delete(id); }
 
