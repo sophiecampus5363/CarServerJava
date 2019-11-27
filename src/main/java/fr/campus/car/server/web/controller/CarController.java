@@ -19,7 +19,10 @@ public class CarController {
     @Autowired
     private CarDao carDao;
 
-    // Liste de toutes les voitures
+    /*
+     * GET /cars
+     * Liste de toutes les voitures
+     */
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
     public MappingJacksonValue listeCars() {
         Iterable<Car> cars                  = carDao.findAll();
@@ -29,6 +32,20 @@ public class CarController {
         carsFiltres.setFilters(listDeNosFiltres);
 
         return carsFiltres;
+    }
+
+    /*
+     * GET /cars/1
+     * Afficher un produit
+     */
+    @GetMapping(value = "/cars/{id}")
+    public Car show(@PathVariable int id) {
+        return carDao.findById(id);
+    }
+
+    @GetMapping(value = "test/cars/{priceLimit}")
+    public List<Car> testeDeRequetes(@PathVariable int priceLimit) {
+        return carDao.findByPriceGreaterThan(400);
     }
 
     /*

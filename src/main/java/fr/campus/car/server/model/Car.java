@@ -14,13 +14,15 @@ public class Car {
 
     private String carMaker;
     private String carModel;
+    private int price;
 
     public Car() {}
 
-    public Car(int id, String carMaker, String carModel) {
+    public Car(int id, String carMaker, String carModel, Integer price) {
         this.id       = id;
         this.carMaker = carMaker;
         this.carModel = carModel;
+        this.price    = price;
     }
 
     public int getId() { return id; }
@@ -45,11 +47,20 @@ public class Car {
         this.carModel = carModel;
     }
 
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
     @Override
     public String toString(){
-        return "Product{"+
+        return "Car{"+
                 "id=" + id +
                 ", carMaker='"+ carMaker + '\'' +
-                ", carModel=" + carModel + '}';
+                ", carModel=" + carModel + '}' +
+                ", price=" + price + '}';
     }
 }
