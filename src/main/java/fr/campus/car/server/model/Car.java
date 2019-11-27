@@ -1,39 +1,37 @@
 package fr.campus.car.server.model;
 
-public class Car{
+public class Car {
 
     private int id;
     private String carMaker;
     private String carModel;
 
-    public Car() {
-
-    }
+    public Car() {}
 
     public Car(int id, String carMaker, String carModel) {
-        this.id=id;
+        this.id       = id;
         this.carMaker = carMaker;
         this.carModel = carModel;
     }
 
+    // id
     public int getId() { return id; }
-
     public void setId(int id) {
         this.id = id;
     }
 
+    // CarMaker
     public String getCarMaker() {
         return carMaker;
     }
-
     public void setCarMaker(String carMaker) {
         this.carMaker = carMaker;
     }
 
+    // CarModel
     public String getCarModel() {
         return carModel;
     }
-
     public void setCarModel(String carModel) {
         this.carModel = carModel;
     }
