@@ -1,17 +1,24 @@
 package fr.campus.car.server.model;
 
-public class Car{
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity // Permet de prendre en compte la classe, évite d'utiliser persistence.xml
+public class Car {
+
+    // On annote id avec @Id et @GeneratedValue afin qu'il soit identifié en tant que clé unique auto-générée
+    @Id
+    @GeneratedValue
     private int id;
+
     private String carMaker;
     private String carModel;
 
-    public Car() {
-
-    }
+    public Car() {}
 
     public Car(int id, String carMaker, String carModel) {
-        this.id=id;
+        this.id       = id;
         this.carMaker = carMaker;
         this.carModel = carModel;
     }
