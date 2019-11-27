@@ -9,9 +9,9 @@ import java.util.List;
 
 @Repository
 public interface CarDao extends JpaRepository<Car, Integer> {
-    public List<Car> findAll();
-    public Car findById(int id);
-    public Car save(Car car);
-    public Car update(int id, Car car);
-    public Car delete(int id);
+
 }
+
+
+
+
