@@ -8,8 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-import static fr.campus.car.server.dao.CarDaoImpl.cars;
-
 @Api (description ="API pour les opérations CRUD sur les voitures")
 @RestController
 public class CarController {
