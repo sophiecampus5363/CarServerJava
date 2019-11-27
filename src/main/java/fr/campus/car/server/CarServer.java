@@ -8,10 +8,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 
-public class ListeModelesVoituresApplication {
+public class CarServer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ListeModelesVoituresApplication.class, args);
+		SpringApplication.run(CarServer.class, args);
 	}
 
 }

@@ -23,7 +23,7 @@ public class CarController {
      * GET /cars
      * Liste de toutes les voitures
      */
-    @RequestMapping(value = "/cars", method = RequestMethod.GET)
+    @RequestMapping(value = "/car", method = RequestMethod.GET)
     public MappingJacksonValue listeCars() {
         Iterable<Car> cars                  = carDao.findAll();
         SimpleBeanPropertyFilter monFiltre  = SimpleBeanPropertyFilter.serializeAllExcept("carMaker");
@@ -35,24 +35,24 @@ public class CarController {
     }
 
     /*
-     * GET /cars/1
+     * GET /car/1
      * Afficher une voiture
      */
-    @GetMapping(value = "/cars/{id}")
+    @GetMapping(value = "/car/{id}")
     public Car show(@PathVariable int id) {
         return carDao.findById(id);
     }
 
     /*
-     * GET /test/cars/30000
+     * GET /test/car/30000
      * Filtre qui affiche les voitures dont le prix > priceLimit
      */
-    @GetMapping(value = "filterPrice/cars/{priceLimit}")
+    @GetMapping(value = "filterPrice/car/{priceLimit}")
     public List<Car> testeDeRequete(@PathVariable int priceLimit) {
         return carDao.findByPriceGreaterThan(priceLimit);
     }
 
-    @GetMapping(value = "filterMark/cars/{search}")
+    @GetMapping(value = "filterMark/car/{search}")
     public List<Car> testeDeRequete(@PathVariable String search) {
         return carDao.findByCarMakerLike("%" + search + "%");
     }
