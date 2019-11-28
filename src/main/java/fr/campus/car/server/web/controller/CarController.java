@@ -36,11 +36,12 @@ public class CarController {
 
     /*
      * GET /car/1
-     * Afficher une voiture
+     * Afficher une voiture ou deux
      */
     @GetMapping(value = "/car/{id}")
     public Car show(@PathVariable int id) {
         return carDao.findById(id);
+
     }
 
     /*
